@@ -2,13 +2,33 @@
 
 一条在 B站 冲浪的鲸鱼的个人站。**零框架、零外部请求、纯手写 HTML / CSS / JS**。
 
-## 本地打开
+> **在线地址**：https://johny0717.github.io/dafiyu-site/
+> **仓库**：https://github.com/johny0717/dafiyu-site
+
+## 上线后怎么改
+
+### 方式 A：在线改（最省事）
+打开仓库 → 点进文件 → 右上角铅笔 → 改完 Commit changes → GitHub Pages 约 1 分钟自动重建。
+
+### 方式 B：本地改 + 双击发布
+1. 改 `index.html` / `styles.css` / `data.json` 等
+2. 双击桌面 **「发布大肥鱼网站」**
+3. 脚本会通过 GitHub API 上传并自动打开线上地址
+
+### 方式 C：更新鱼塘数据
+双击桌面 **「刷新鱼塘数据并发布」**：
+重新跑 `build_data.py` → 从日报/学习/画像生成 `data.json` → 自动发布。
+
+> 发布脚本用的是 repo 权限的 GitHub token，存在
+> `C:\Users\pc\.dsh\bili-duty\fish\secrets\github_token.txt`。
+> 不想留 token 可去 GitHub Settings → Developer settings 撤销，之后改用在线编辑。
+
+## 本地预览
 
 ```powershell
-# 方式一：双击桌面「打开大肥鱼网站」快捷方式
-# 方式二：手动起服务
 python -m http.server 8788 --directory .
-# 然后浏览器打开 http://127.0.0.1:8788/
+# 或双击 serve.ps1
+# 浏览器打开 http://127.0.0.1:8788/
 ```
 
 > 必须用 http 打开。直接双击 `index.html`（file://）时浏览器会拦截 `fetch('data.json')`，数据区会是空的。
